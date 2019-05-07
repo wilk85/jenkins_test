@@ -1,0 +1,25 @@
+1. tworze plik pythona, a w nim restapi flask
+1-1. pip3 install Flask, psutil, pipreqs
+2. tworze plik requirements.txt pip freeze > requirements.txt lub pipreqs ./
+2-1. wybieram w pliku req. tylko instalowane przeze mnie paczki, reszte usuwam
+2-2 do pliku main.py dodaje cale api we flasku przyklad ./main.py
+3. instaluje dockera https://docs.docker.com/install/linux/docker-ce/centos/
+3-1. tworze w tym samym folderze plik Dockerfile w nim konfiguruje wszystkie potrzebne paczki przyklad ./Dockerfile
+4. tworze repo na github i przesylam wszystkie pliki do niego
+===== Koniec cwiczenia #1 =====
+
+1. po stworzeniu plikow Dockerfile, or main.py / na koncie azure tworzymy container registries https://portal.azure.com/#create/Microsoft.ContainerRegistry
+1-1. tworzymy registry name, resource group jesli nie ma, admin user disable, SKU basic
+2. wchodzimy na azure devops / tworzymy projekt / tworzymy repo w tym projekcie
+2-1. tworzymy klucz ssh na naszym systemie ubunt/centos i w repo na azure manage ssh keys / wklejamy klucz z .pub
+2-2. git clone i sciagamy repo do siebie na system pozniej przesylamy gitem na repo do azure
+2-21. git clone, git add, git push origin master
+2-3. pliki ktore musza byc, deploy.yaml, docker-compose.yaml, Dockerfile, main.py, Readme.md, requirements.txt (nazwy dowolne)
+2-31. git clone przez ssh wpisujemy haslo ustawione na kluczu w moim przypadku dupadupa / lub git remote add origin adres / git push origin master (sprawdzic dokaldnie komende)
+2-41. tworzenie docker-compose.yaml https://docs.docker.com/compose/gettingstarted/
+2-5. do pliku .py dodajemy w ostatniej linii app.run(host='0.0.0.0')
+2-6. tworze kubernetes services, podaje nazwe, resource group, i wybieram node size na b2s i node count na 1 i create
+3. tworze deploy.yaml w app podaje nazwe konteneru / image podaje nazwe  
+3-1. w azure devops ustawiamy nowy pipeline - use the classic editor - continue - empty job - agent pool hosted ubuntu
+3-2. wybieram agent job dodaje docker build - azure cont registry, ver0, free trial, container-registy twoj kontener 
+action to build image
